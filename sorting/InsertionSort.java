@@ -1,6 +1,10 @@
 /**
 This is how insertion sorting works:
-
+For all elements from arr[1] to arr[n] (n = length of array - 1):
+    Let the current element, the key, be arr[i]
+    
+    1. In descending order, iterate through elements between arr[0] inclusive and arr[i] exclusive. Move elements larger than key to the next element. 
+    If the element is smaller than the key, change the next element to the key value and go to the next iteration.
 **/
 import java.util.*;
 public class InsertionSort{
