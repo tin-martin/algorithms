@@ -5,7 +5,7 @@ The iterative process then restarts from the beginning. When the bubble sort ite
 without detecting any abnormalities, the array is fully sorted.
 **/
 import java.util.*;
-public class test{
+public class BubbleSort{
   public static int[] bubbleSort(int[] arr){
     int N = arr.length;
     boolean isSorted = false;
