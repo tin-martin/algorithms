@@ -5,7 +5,7 @@ is just iterating through the block and comparing each value to x.
 **/
 import java.util.*;
 public class JumpSearch{
-  public static int jumpSearch(int x, int[] arr){
+  public static int search(int x, int[] arr){
     //m is the size of jump
     int m = (int)Math.floor(Math.sqrt(arr.length));
     for(int i=0;i<arr.length;i+=m){
@@ -26,6 +26,6 @@ public class JumpSearch{
   public static void main(String[] args){
         int arr[] = {0,5,15,32,56,79,99};
         int x = 56;
-        System.out.println(x + " is at index " + jumpSearch(x,arr));
+        System.out.println(x + " is at index " + search(x,arr));
   }
 }
