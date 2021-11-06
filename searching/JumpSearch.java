@@ -1,31 +1,36 @@
 /**
-The array must be in ascendinng order for jump search to work. Iterate through array in blocks of m length. Let x be the searched element. 
-If the highest number of a given block is less than x, keep iterating. Otherwise, perform a linear search on the given block. A linear search
-is just iterating through the block and comparing each value to x. 
+
+Jump search works on a sorted array. 
+
+In jump search, the algorithm jumps through the array at a particular increment. 
+
+For example, with the increment of 2, the jump search would look at values at indexes of 2,4,6,8, etc.
+Importantly, the jump search searches from left to right.
+
+Iterating through these values, if the value is smaller than x, (the value we are searching for)
+we know that x can be found between the selected index and the (selected index - jump increment + 1) inclusive.
+
+We can perform a linear search to find x.
 **/
+
 import java.util.*;
 public class JumpSearch{
-  public static int search(int x, int[] arr){
-    //m is the size of jump
-    int m = (int)Math.floor(Math.sqrt(arr.length));
-    for(int i=0;i<arr.length;i+=m){
-        // if x is less than upper limit of jump
-        if(x < arr[i+m]){
-            //linear search
-            for(int j=i;j<=i+m;j++){
-                //if value is found
-                if (x == arr[j]){
-                    return j;
-                }
+    public static int search (int[] arr, int x){
+        int step = (int)Math.floor(Math.sqrt(arr.length)); 
+        int j = step-1;   
+        while(x > arr[j]){
+            if(j >= arr.length-1) return -1;
+            j += step;
+        }
+        for(int i=j-step+1;i<j;i++){
+            if (x == arr[i]){
+                return i;
             }
         }
+        return -1;
     }
-    //if value is not found
-    return -1;
-  }
   public static void main(String[] args){
-        int arr[] = {0,5,15,32,56,79,99};
-        int x = 56;
-        System.out.println(x + " is at index " + search(x,arr));
+        int arr[] = {11,21,32,45,60,76,94};
+        System.out.println(search(arr,60));
   }
 }
