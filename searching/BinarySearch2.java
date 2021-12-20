@@ -1,31 +1,19 @@
 import java.util.*;
+import java.io.*;
 public class test{
-    public static int search (int[] arr, int l, int u, int x){
-        // N is the length of the array of elements which could be x
-        int N = 1+(u-l);
-        //if the length of potential items is not 1
-        if(l!=u){
-            int m = l + N/2;
-            //if the middle element is x, return the index of the middle
-            if(x == arr[m]){
-                return m;
-            }else if(x < arr[m]){
-                //recursively search left half excluding middle
-                return search(arr,l,m-1,x);
-            }else if(x > arr[m]){
-                //recursively search left half excluding middle
-                return search(arr,m+1,u,x);
-            }
-        //if the length of potential items is 1, check whether the item is x. 
-        }else if(x == arr[l]){
-            return l;
+    public static int search(int[] arr,int x){
+        int N = arr.length;
+        int k = 0;
+        for(int b=N/2;b>=1;b/=2){
+              while (k+b < N && arr[k+b] <= x) k += b;
         }
-        //If we reach this, item x is not in the searched array.  
-        // In this case return -1
+        if(arr[k] == x) return k;
         return -1;
     }
-  public static void main(String[] args){
-        int arr[] = {11,21,32,45,60,76,94};
-        System.out.println(search(arr,0,arr.length-1,45));
-  }
+    public static void main(String[] args) throws Exception{
+        int[] arr = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+        System.out.println(search(arr,20));
+        
+       
+    }
 }
